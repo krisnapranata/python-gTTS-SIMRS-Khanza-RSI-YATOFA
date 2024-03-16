@@ -1,0 +1,1 @@
+python3.12 C:\xampp\htdocs\panggil.py
