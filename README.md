@@ -14,10 +14,15 @@ Aplikasi ini dibangun menggunakan bahasa pemerograman python sehingga membutuhka
 file konfigurasi :
 
 kd_poli = "BED"
+
 host = "localhost"
+
 user = "sik"
+
 password = "sik"
+
 database = "sik"
+
 
 kode poli / kd_poli disesuaikan dengan kode poli di SIMRS Khanza
 host di sesuaikan dengan host Database
