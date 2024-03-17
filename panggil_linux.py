@@ -77,7 +77,7 @@ def get_kddokter():
 def jadwal_hari_dokter():
     hari = date.today().strftime("%A")
     if hari == "Monday":
-       hari = "KAMIS"
+       hari = "SENIN"
     elif hari == "Tuesday":
          hari = "SELASA"
     elif hari == "Wednesday":
