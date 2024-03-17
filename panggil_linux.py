@@ -14,7 +14,7 @@ kd_poli = "BED"
 host = "localhost"
 user = "sik"
 password = "00"
-database = "yatofa27022024"
+database = "sik"
 
 def speak(text, language='id'):
     mp3_fo = BytesIO()
@@ -29,7 +29,7 @@ def speak(text, language='id'):
 def koneksi():
     mydb = mysql.connector.connect(host=host, user=user, password=password, database=database)
     return mydb
-    
+	
 def cekdatabase():
     kd_dokter = get_kddokter() 
     if kd_dokter is False:
@@ -69,9 +69,10 @@ def get_kddokter():
     mycursor.execute(sql)
     myresult = mycursor.fetchone()
     if myresult is not None:
-        return myresult
+       return myresult
     else:
-        return False
+       return False
+    
     
 def jadwal_hari_dokter():
     hari = date.today().strftime("%A")
@@ -102,36 +103,52 @@ def check_internet_connection():
         return False
     finally:
         sock.close()
+        
+def check_port_database():
+    a_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    location = ("127.0.0.1", 3306)
+    result_of_check = a_socket.connect_ex(location)
+    if result_of_check == 0:
+       return True
+    else:
+       return False
+       
+    a_socket.close()
 
 print("Listening for Antrian...")
 
 while True:
     try:
-        hasil = cekdatabase()
-        if hasil is False:
-            print("Periksa Jadwal Dokter")
-            time.sleep(2)
-        elif hasil[2] == str(0):
-            print("Menunggu Antrin Selanjutnya")
-            time.sleep(2)
-        elif check_internet_connection():
-            no_rawat = cekdatabase()
-            no_rawat = no_rawat[3]
-            panggil = antrian_panggil(no_rawat)
-            print(panggil)
-            pygame.init()
-            pygame.mixer.init()
-            sound = speak("Antrian nomor " + str(panggil[5]) + "," + str(panggil[3].lower()) + "," + "silahkan masuk ke " + str(panggil[4]))
-            #sound = speak("Krisna")
-            sound.seek(0)
-            pygame.mixer.music.load(sound)
-            pygame.mixer.music.play()
-            #speak("Antrian nomor " + str(panggil[5]) + "," + str(panggil[3]) + "," + "silahkan masuk ke " + str(panggil[4]))
-            updatedatabase()
-            time.sleep(1)
+        if check_port_database():
+           hasil = cekdatabase()
+           if hasil is False:
+              print("Periksa Jadwal Dokter")
+              time.sleep(2)
+           elif hasil[2] == str(0):
+              print("Menunggu Antrin Selanjutnya")
+              time.sleep(2)
+           elif check_internet_connection():
+              no_rawat = cekdatabase()
+              no_rawat = no_rawat[3]
+              panggil = antrian_panggil(no_rawat)
+              print(panggil)
+              pygame.init()
+              pygame.mixer.init()
+              sound = speak("Antrian nomor " + str(panggil[5]) + "," + str(panggil[3].lower()) + "," + "silahkan masuk ke " + str(panggil[4]))
+              #sound = speak("Krisna")
+              sound.seek(0)
+              pygame.mixer.music.load(sound)
+              pygame.mixer.music.play()
+              #speak("Antrian nomor " + str(panggil[5]) + "," + str(panggil[3]) + "," + "silahkan masuk ke " + str(panggil[4]))
+              updatedatabase()
+              time.sleep(1)
+           else:
+              print("Check Koneksi Internet Anda...!!!")
+              time.sleep(2)
         else:
-            print("Check Koneksi Internet Anda...!!!")
-            time.sleep(2)
+           print("Menunggu Database ON...!!!")
+           time.sleep(2)
+        
     
     except KeyboardInterrupt:
         print('Program Selese')
