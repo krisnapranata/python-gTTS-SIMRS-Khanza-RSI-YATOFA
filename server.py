@@ -31,7 +31,7 @@ while True:
         print(f"Received: {data.decode()}")
         if data2 == "Open" or data2 == "open":
             print("yes")
-            os.system('python3.12 C:\\xampp\\htdocs\\panggil.py')
+            os.system('python3.12 C:\\xampp\\htdocs\\panggil.py') #gantis sesuai path tempat file python
        
         # Send a response
         response = f"Received: {data.decode()}"
