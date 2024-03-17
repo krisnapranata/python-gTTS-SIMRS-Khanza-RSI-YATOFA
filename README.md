@@ -9,7 +9,15 @@ Aplikasi ini dibangun menggunakan bahasa pemerograman python sehingga membutuhka
 3. Library mysql-connector-python
    pip install mysql-connector-python
 
-4. install python3+
+4. jika menggunakan windows download python3+
+   
+5. jika menggunakan linux atau raspberry biasanya sudah terinstall python jika belum ketik perintah :
+
+   => sudo apt-get update
+   
+   => sudo apt-get install python3.12
+
+7. 
 
 file konfigurasi :
 
