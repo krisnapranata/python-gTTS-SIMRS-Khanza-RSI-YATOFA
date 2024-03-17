@@ -25,8 +25,11 @@ Aplikasi ini dibangun menggunakan bahasa pemerograman python sehingga membutuhka
 $ git clone https://github.com/krisnapranata/python-gTTS-SIMRS-Khanza-RSI-YATOFA.git
 
 $ cd python-gTTS-SIMRS-Khanza-RSI-YATOFA
+
 $ pip install -r requirements.txt
+
 $ python3.12 pemanggil_windows.py <path-image> <untuk pemanggil poli>
+
 $ python3.12 pemanggil_apotek_windows.py <path-image> <untuk pemanggil farmasi>
 
 file konfigurasi :
