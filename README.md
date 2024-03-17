@@ -58,3 +58,11 @@ misal di drive C:
 kemudian buka CMD lalu ketik : python3.12 C:\panggil_windows.py kemudian enter
 
 lalu seperti biasa di SIMRS Khanza klik kanan dan antrian masuk poli
+
+============================================================================
+
+untuk menggunakan tampilan farmasi
+
+silahkan copy folder farmasi ke htdocs
+
+dan rubah configurasi database di file getdata.php
